@@ -1,0 +1,9 @@
+{
+  "name": "this-and-that",
+  "version": "2.0.0",
+  "description": "This & That — reality TV reviews, with a login-based admin",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "license": "UNLICENSED"
+}

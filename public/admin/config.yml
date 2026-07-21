@@ -1,0 +1,34 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+site_url: https://thisandthat.today
+display_url: https://thisandthat.today
+
+collections:
+  - name: "reviews"
+    label: "Reviews"
+    label_singular: "Review"
+    description: "Everything in the 'Trending right now' grid on your homepage. Newest shows at the top."
+    folder: "content/reviews"
+    create: true
+    extension: "json"
+    format: "json"
+    slug: "{{fields.title}}"
+    summary: "{{title}}  ·  {{verdict}}"
+    sortable_fields: ["date", "title"]
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Category", name: "category", widget: "select", options: ["Movie", "Reality TV"] }
+      - { label: "Category label", name: "catLabel", widget: "string", hint: "The small line next to the category, e.g. Trailer, New Season, In Cinemas, New Format" }
+      - { label: "The take", name: "take", widget: "text", hint: "Your one-line verdict. Quotation marks are added automatically." }
+      - { label: "Score out of 10", name: "score", widget: "string", required: false, hint: "e.g. 8.7 — leave blank if it isn't rated yet" }
+      - { label: "Status", name: "status", widget: "string", required: false, hint: "Shown instead of a score when there's no score yet, e.g. Premieres Jul 25" }
+      - { label: "Verdict badge", name: "verdict", widget: "string", hint: "The small outlined badge, e.g. Must Watch, On The Radar, Guilty Pleasure" }
+      - { label: "Poster image", name: "poster", widget: "image", required: false, hint: "Optional. If left blank, the T&T tile shows (or TMDB art loads, if you add a key)." }
+      - { label: "TMDB search title", name: "tmdbQuery", widget: "string", required: false, hint: "Only if the poster search should use a different title than above." }
+      - { label: "TMDB search year", name: "tmdbYear", widget: "string", required: false }
+      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }

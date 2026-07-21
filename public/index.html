@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>This &amp; That · Reality. Reviews. Stories.</title>
+<meta name="description" content="This, that & everything in between. Honest reviews of reality TV and the movies everyone's talking about. Reality. Reviews. Stories." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://image.tmdb.org" />
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;0,6..96,900;1,6..96,400;1,6..96,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --cream:#F6F3EA;
+    --cream-deep:#EFEBDE;
+    --ink:#17140F;
+    --ink-soft:#4b463c;
+    --ink-mute:#8a8272;
+    --gold:#BF9B57;
+    --gold-deep:#9c7c3a;
+    --line:rgba(23,20,15,0.12);
+    --line-gold:rgba(191,155,87,0.55);
+    --shadow:0 24px 60px -30px rgba(23,20,15,0.35);
+    --display:"Bodoni Moda", Georgia, serif;
+    --sans:"Jost", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-weight:400;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none !important; transition:none !important;}
+  }
+
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+
+  .wrap{width:min(1180px,92vw);margin-inline:auto;}
+
+  /* ---------- shared type devices ---------- */
+  .eyebrow{
+    font-family:var(--sans);font-weight:500;font-size:.72rem;
+    letter-spacing:.34em;text-transform:uppercase;color:var(--gold-deep);
+  }
+  .rule-lead{display:inline-flex;align-items:center;gap:.9rem;}
+  .rule-lead::before,.rule-lead::after{content:"";height:1px;width:34px;background:var(--line-gold);}
+  .rule-lead.single::after{display:none;}
+
+  .section{padding:clamp(4.5rem,9vw,8rem) 0;}
+  .section-head{max-width:640px;margin-bottom:3.2rem;}
+  .section-head .eyebrow{display:inline-block;margin-bottom:1.1rem;}
+  .section-title{
+    font-family:var(--display);font-weight:500;
+    font-size:clamp(2rem,4.4vw,3.1rem);line-height:1.06;letter-spacing:.01em;margin:0 0 1rem;
+  }
+  .section-title em{font-style:italic;color:var(--gold-deep);}
+  .lede{color:var(--ink-soft);font-size:1.05rem;max-width:56ch;}
+
+  /* ---------- monogram (T & T) ---------- */
+  .mono{
+    font-family:var(--display);font-weight:600;letter-spacing:.02em;line-height:1;
+    display:inline-flex;align-items:baseline;color:var(--ink);
+  }
+  .mono .amp{color:var(--gold);font-style:italic;padding:0 .04em;}
+
+  /* ---------- nav ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:60;
+    background:color-mix(in srgb, var(--cream) 86%, transparent);
+    backdrop-filter:saturate(120%) blur(10px);
+    border-bottom:1px solid transparent;
+    transition:border-color .4s ease, background .4s ease;
+  }
+  header.nav.scrolled{border-bottom-color:var(--line);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px;}
+  .brand{display:flex;align-items:center;gap:.85rem;}
+  .brand .mono{font-size:1.5rem;}
+  .brand .divider{width:1px;height:26px;background:var(--line-gold);}
+  .brand .brand-word{
+    font-family:var(--display);font-weight:500;font-size:.82rem;
+    letter-spacing:.32em;text-transform:uppercase;padding-top:2px;
+  }
+  .brand .brand-word .amp2{color:var(--gold-deep);font-style:italic;}
+
+  nav.links{display:flex;align-items:center;gap:2rem;}
+  nav.links a.nav-link{
+    font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
+    font-weight:400;color:var(--ink-soft);position:relative;padding:.3rem 0;
+  }
+  nav.links a.nav-link::after{
+    content:"";position:absolute;left:0;bottom:-2px;height:1px;width:0;
+    background:var(--gold);transition:width .3s ease;
+  }
+  nav.links a.nav-link:hover{color:var(--ink);}
+  nav.links a.nav-link:hover::after{width:100%;}
+  .nav-socials{display:flex;align-items:center;gap:.55rem;}
+
+  .btn{
+    font-family:var(--sans);font-size:.76rem;letter-spacing:.16em;
+    text-transform:uppercase;font-weight:500;
+    padding:.72rem 1.35rem;border-radius:2px;cursor:pointer;
+    display:inline-flex;align-items:center;gap:.55rem;
+    transition:transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+    border:1px solid var(--ink);white-space:nowrap;
+  }
+  .btn-solid{background:var(--ink);color:var(--cream);border-color:var(--ink);}
+  .btn-solid:hover{background:transparent;color:var(--ink);}
+  .btn-gold{background:transparent;color:var(--ink);border-color:var(--gold);}
+  .btn-gold:hover{background:var(--gold);color:#fff;border-color:var(--gold);transform:translateY(-1px);}
+  .btn svg{width:15px;height:15px;}
+  .btn.nav-social{padding:.62rem .7rem;}
+  .btn.nav-social svg{width:17px;height:17px;}
+
+  .menu-toggle{display:none;background:none;border:0;cursor:pointer;padding:8px;}
+  .menu-toggle span{display:block;width:24px;height:1.5px;background:var(--ink);margin:5px 0;transition:.3s;}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;padding:clamp(4.5rem,9vw,7.5rem) 0 clamp(4rem,7vw,6rem);text-align:center;overflow:hidden;}
+  .wordmark{
+    font-family:var(--display);font-weight:500;line-height:.92;letter-spacing:.015em;
+    font-size:clamp(3.2rem,11.5vw,8.4rem);text-transform:uppercase;margin:0;color:var(--ink);
+  }
+  .wordmark .and{
+    color:var(--gold);font-style:normal;font-weight:500;text-transform:uppercase;
+    font-size:.5em;letter-spacing:.05em;padding:0 .18em;vertical-align:.14em;
+  }
+  .tagline{
+    margin:2.1rem auto 0;font-family:var(--sans);font-weight:400;
+    font-size:clamp(.8rem,1.7vw,1rem);letter-spacing:.4em;text-transform:uppercase;color:var(--ink);
+  }
+  .hero-sub{
+    margin:2rem auto 0;font-family:var(--display);font-weight:400;
+    font-size:clamp(1.25rem,2.8vw,1.85rem);color:var(--ink-soft);letter-spacing:.01em;
+  }
+  .hero-sub .amp{color:var(--gold);font-style:italic;}
+  .hero-cta{margin-top:2.7rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+  .hero-meta{
+    margin-top:3.4rem;display:flex;gap:2.4rem;justify-content:center;flex-wrap:wrap;
+    color:var(--ink-mute);font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;
+  }
+  .hero-meta span{display:inline-flex;align-items:center;gap:.55rem;}
+  .hero-meta .dot{width:4px;height:4px;border-radius:50%;background:var(--gold);}
+
+  /* ---------- reviews ---------- */
+  .reviews{background:var(--cream-deep);}
+  .reviews-top{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:3rem;}
+  .see-all{
+    font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-deep);
+    display:inline-flex;align-items:center;gap:.5rem;border-bottom:1px solid var(--line-gold);
+    padding-bottom:.35rem;transition:gap .25s ease;
+  }
+  .see-all:hover{gap:.9rem;}
+
+  .review-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .review{
+    background:var(--cream);padding:2.2rem 2.1rem;
+    display:flex;flex-direction:row;gap:1.5rem;position:relative;transition:background .4s ease;
+  }
+  .review::before{content:"";position:absolute;left:0;top:0;height:2px;width:0;background:var(--gold);transition:width .45s ease;}
+  .review:hover{background:#fbf9f2;}
+  .review:hover::before{width:100%;}
+
+  .review-poster{
+    flex:0 0 108px;width:108px;align-self:flex-start;aspect-ratio:2/3;
+    border-radius:3px;overflow:hidden;position:relative;
+    background:radial-gradient(120% 100% at 50% 0%, #fbf9f2 0%, var(--cream-deep) 100%);
+    border:1px solid var(--line);display:flex;align-items:center;justify-content:center;
+  }
+  .review-poster .mono{font-size:1.75rem;opacity:.5;}
+  .review-poster img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    opacity:0;transition:opacity .6s ease;
+  }
+  .review-poster img.loaded{opacity:1;}
+
+  .review-body{flex:1;min-width:0;display:flex;flex-direction:column;gap:.85rem;}
+  .review-cat{display:flex;align-items:center;gap:.7rem;font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-mute);}
+  .review-cat b{color:var(--gold-deep);font-weight:500;}
+  .review-title{font-family:var(--display);font-weight:500;font-size:1.55rem;line-height:1.12;margin:.1rem 0 0;}
+  .review-take{color:var(--ink-soft);font-size:.98rem;font-style:italic;font-family:var(--display);}
+  .review-foot{
+    margin-top:auto;padding-top:1.2rem;border-top:1px solid var(--line);
+    display:flex;align-items:center;justify-content:space-between;gap:.8rem;flex-wrap:wrap;
+  }
+  .score{display:flex;align-items:baseline;gap:.15rem;font-family:var(--display);}
+  .score .num{font-size:1.85rem;font-weight:600;line-height:1;}
+  .score .out{font-size:.82rem;color:var(--ink-mute);letter-spacing:.05em;}
+  .status{
+    font-family:var(--sans);font-weight:500;font-size:.68rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--gold-deep);display:inline-flex;align-items:center;gap:.5rem;
+  }
+  .status::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);}
+  .verdict{
+    font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;
+    color:var(--ink);border:1px solid var(--gold);border-radius:2px;padding:.4rem .65rem;white-space:nowrap;
+  }
+
+  /* ---------- about ---------- */
+  .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2.5rem,6vw,5rem);align-items:center;}
+  .about-card{
+    position:relative;aspect-ratio:4/5;border:1px solid var(--line);
+    background:radial-gradient(120% 100% at 50% 0%, #fbf9f2 0%, var(--cream-deep) 100%);
+    display:flex;align-items:center;justify-content:center;overflow:hidden;
+  }
+  .about-card .mono-big{font-family:var(--display);font-weight:600;font-size:clamp(5rem,14vw,9rem);line-height:1;color:var(--ink);}
+  .about-card .mono-big .amp{color:var(--gold);font-style:italic;}
+  .about-card .corner{position:absolute;width:26px;height:26px;border-color:var(--gold);}
+  .about-card .c-tl{top:16px;left:16px;border-top:1px solid;border-left:1px solid;}
+  .about-card .c-br{bottom:16px;right:16px;border-bottom:1px solid;border-right:1px solid;}
+  .about-card .card-tag{position:absolute;bottom:18px;left:0;right:0;text-align:center;font-size:.62rem;letter-spacing:.32em;text-transform:uppercase;color:var(--ink-mute);}
+  .about-body h2{font-family:var(--display);font-weight:500;font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.1;margin:.6rem 0 1.3rem;}
+  .about-body p{color:var(--ink-soft);font-size:1.05rem;margin:0 0 1.15rem;}
+  .about-body .sign{font-family:var(--display);font-style:italic;font-size:1.5rem;color:var(--ink);margin-top:1.6rem;}
+  .about-body .sign span{color:var(--gold-deep);}
+
+  /* ---------- follow ---------- */
+  .follow{background:var(--cream-deep);text-align:center;}
+  .handle{font-family:var(--display);font-weight:500;font-size:clamp(2.2rem,6vw,4rem);line-height:1;margin:1.2rem 0 1.6rem;display:inline-flex;align-items:center;gap:.4rem;}
+  .handle .at{color:var(--gold);font-style:italic;}
+  .follow p{color:var(--ink-soft);max-width:48ch;margin:0 auto 2rem;font-size:1.05rem;}
+  .follow-cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+  .ig-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;max-width:760px;margin:3.2rem auto 0;background:var(--line);border:1px solid var(--line);}
+  .ig-cell{aspect-ratio:1;background:var(--cream);display:flex;align-items:center;justify-content:center;font-family:var(--display);color:var(--ink-mute);font-size:1.3rem;transition:background .35s ease,color .35s ease;position:relative;}
+  .ig-cell .mono{font-size:1.3rem;}
+  .ig-cell:hover{background:var(--ink);color:var(--cream);}
+  .ig-cell:hover .mono{color:var(--cream);}
+  .ig-cell:hover .mono .amp{color:var(--gold);}
+
+  /* ---------- newsletter ---------- */
+  .news{text-align:center;}
+  .news .section-title{margin-bottom:1rem;}
+  .news form{margin:2.2rem auto 0;max-width:520px;display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;}
+  .news input[type=email]{flex:1;min-width:220px;background:transparent;border:0;border-bottom:1px solid var(--ink);padding:.85rem .3rem;font-family:var(--sans);font-size:1rem;color:var(--ink);}
+  .news input[type=email]::placeholder{color:var(--ink-mute);}
+  .news input[type=email]:focus{outline:none;border-bottom-color:var(--gold);}
+  .news .fineprint{margin-top:1.4rem;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);}
+  .news .confirm{color:var(--gold-deep);font-family:var(--display);font-style:italic;font-size:1.15rem;margin-top:1.4rem;min-height:1.2em;}
+
+  /* ---------- footer ---------- */
+  footer.foot{background:var(--ink);color:var(--cream);padding:4rem 0 2.4rem;}
+  .foot-top{display:flex;justify-content:space-between;gap:2.5rem;flex-wrap:wrap;align-items:flex-start;}
+  .foot-brand .mono{font-size:2.2rem;color:var(--cream);}
+  .foot-brand .mono .amp{color:var(--gold);}
+  .foot-brand .fb-tag{margin-top:1rem;font-size:.66rem;letter-spacing:.34em;text-transform:uppercase;color:rgba(246,243,234,.55);}
+  .foot-cols{display:flex;gap:4rem;flex-wrap:wrap;}
+  .foot-col h4{font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin:0 0 1.1rem;font-weight:500;}
+  .foot-col a{display:block;color:rgba(246,243,234,.72);font-size:.92rem;padding:.32rem 0;transition:color .25s;}
+  .foot-col a:hover{color:var(--cream);}
+  .foot-bottom{margin-top:3.4rem;padding-top:1.6rem;border-top:1px solid rgba(246,243,234,.14);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.72rem;letter-spacing:.1em;color:rgba(246,243,234,.5);}
+  .tmdb-credit{margin-top:1.2rem;font-size:.68rem;letter-spacing:.08em;color:rgba(246,243,234,.4);}
+  .tmdb-credit a{color:rgba(246,243,234,.6);text-decoration:underline;text-underline-offset:2px;}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1);}
+  .reveal.in{opacity:1;transform:none;}
+  .hero .reveal{transition-delay:var(--d,0s);}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:860px){
+    nav.links{
+      position:fixed;inset:74px 0 auto 0;background:var(--cream);
+      flex-direction:column;align-items:flex-start;gap:0;padding:1rem 6vw 2rem;
+      border-bottom:1px solid var(--line);
+      transform:translateY(-140%);transition:transform .45s cubic-bezier(.2,.7,.2,1);box-shadow:var(--shadow);
+    }
+    nav.links.open{transform:translateY(0);}
+    nav.links a.nav-link{padding:1rem 0;width:100%;border-bottom:1px solid var(--line);font-size:.9rem;}
+    nav.links a.nav-link::after{display:none;}
+    nav.links .nav-socials{margin-top:1.3rem;}
+    .menu-toggle{display:block;}
+    .brand .brand-word{display:none;}
+    .brand .divider{display:none;}
+    .review-grid{grid-template-columns:1fr;}
+    .about-grid{grid-template-columns:1fr;}
+    .about-card{max-width:360px;margin-inline:auto;}
+    .ig-strip{grid-template-columns:repeat(3,1fr);}
+  }
+  @media (max-width:420px){
+    .review-poster{flex:0 0 88px;width:88px;}
+    .review{padding:1.8rem 1.6rem;gap:1.2rem;}
+  }
+  .menu-toggle.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+  .menu-toggle.open span:nth-child(2){opacity:0;}
+  .menu-toggle.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+</style>
+
+<link rel="canonical" href="https://thisandthat.today/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="This & That" />
+<meta property="og:title" content="This & That · Reality. Reviews. Stories." />
+<meta property="og:description" content="Honest reviews of reality TV and the movies everyone's talking about." />
+<meta property="og:url" content="https://thisandthat.today/" />
+<meta property="og:image" content="https://thisandthat.today/og-image.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="alternate" type="application/rss+xml" title="This & That" href="https://thisandthat.today/rss.xml" />
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top" aria-label="This and That home">
+      <span class="mono">T<span class="amp">&amp;</span>T</span>
+      <span class="divider" aria-hidden="true"></span>
+      <span class="brand-word">This<span class="amp2">&amp;</span>That</span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="links" id="navLinks">
+      <a class="nav-link" href="#reviews">Reviews</a>
+      <a class="nav-link" href="#about">About</a>
+      <span class="nav-socials">
+        <a class="btn btn-gold nav-social" href="https://instagram.com/this_and_that.in" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a class="btn btn-gold nav-social" href="https://www.youtube.com/@this_and_that.official" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="5.2" width="19" height="13.6" rx="4"/><path d="M10.3 9.2l5 2.8-5 2.8z" fill="currentColor" stroke="none"/></svg>
+        </a>
+      </span>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <h1 class="wordmark reveal" style="--d:.1s">This<span class="and">and</span>That</h1>
+    <div class="tagline reveal" style="--d:.26s">Reality. Reviews. Stories.</div>
+    <p class="hero-sub reveal" style="--d:.38s">This, that <span class="amp">&amp;</span> everything in between.</p>
+
+    <div class="hero-cta reveal" style="--d:.5s">
+      <a class="btn btn-solid" href="#reviews">Read the latest</a>
+      <a class="btn btn-gold" href="https://instagram.com/this_and_that.in" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        Instagram
+      </a>
+      <a class="btn btn-gold" href="https://www.youtube.com/@this_and_that.official" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="5.2" width="19" height="13.6" rx="4"/><path d="M10.3 9.2l5 2.8-5 2.8z" fill="currentColor" stroke="none"/></svg>
+        YouTube
+      </a>
+    </div>
+
+    <div class="hero-meta reveal" style="--d:.62s">
+      <span><i class="dot"></i>New reviews weekly</span>
+      <span><i class="dot"></i>Reality TV, unfiltered</span>
+      <span><i class="dot"></i>Movies too</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LATEST REVIEWS ================= -->
+<section class="section reviews" id="reviews">
+  <div class="wrap">
+    <div class="reviews-top reveal">
+      <div class="section-head" style="margin-bottom:0">
+        <span class="eyebrow">On the radar</span>
+        <h2 class="section-title" style="margin-top:1rem">Trending right <em>now</em></h2>
+      </div>
+      <a class="see-all" href="https://instagram.com/this_and_that.in" target="_blank" rel="noopener">
+        See all on Instagram
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+    <div class="review-grid reveal">
+      <article class="review" data-tmdb-type="movie" data-tmdb-query="Ramayana" data-tmdb-year="2026">
+        <div class="review-poster"><span class="mono">T<span class="amp">&amp;</span>T</span><img alt="Ramayana poster" loading="lazy" /></div>
+        <div class="review-body">
+          <div class="review-cat"><b>Movie</b> · Trailer</div>
+          <h3 class="review-title">Ramayana</h3>
+          <p class="review-take">"Ranbir's Ram, Yash's Ravana, and a Hans Zimmer x AR Rahman score. If the film lands like this trailer, we're all done for."</p>
+          <div class="review-foot">
+            <span class="status">Trailer Jul 24</span>
+            <span class="verdict">Most Anticipated</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="review" data-tmdb-type="tv" data-tmdb-query="Khatron Ke Khiladi">
+        <div class="review-poster"><span class="mono">T<span class="amp">&amp;</span>T</span><img alt="Khatron Ke Khiladi 15 poster" loading="lazy" /></div>
+        <div class="review-body">
+          <div class="review-cat"><b>Reality TV</b> · New Season</div>
+          <h3 class="review-title">Khatron Ke Khiladi 15</h3>
+          <p class="review-take">"Rohit Shetty's fear factory reopens in Cape Town, and this cast is pure chaos. Orry attempting stunts is reason enough."</p>
+          <div class="review-foot">
+            <span class="status">Premieres Jul 25</span>
+            <span class="verdict">On The Radar</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="review" data-tmdb-type="tv" data-tmdb-query="Lock Upp">
+        <div class="review-poster"><span class="mono">T<span class="amp">&amp;</span>T</span><img alt="Lock Upp 2 poster" loading="lazy" /></div>
+        <div class="review-body">
+          <div class="review-cat"><b>Reality TV</b> · New Season</div>
+          <h3 class="review-title">Lock Upp 2</h3>
+          <p class="review-take">"The celebrity jail is back, now on Netflix with a fresh format. Confessions, controversy and zero chill incoming."</p>
+          <div class="review-foot">
+            <span class="status">Coming Soon</span>
+            <span class="verdict">On The Radar</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="review" data-tmdb-type="tv" data-tmdb-query="Alliance">
+        <div class="review-poster"><span class="mono">T<span class="amp">&amp;</span>T</span><img alt="Alliance poster" loading="lazy" /></div>
+        <div class="review-body">
+          <div class="review-cat"><b>Reality TV</b> · New Format</div>
+          <h3 class="review-title">Alliance</h3>
+          <p class="review-take">"Kunal Kemmu hosts a game built on trust, betrayal and very shaky alliances. Strategy nerds, this is your Roman Empire."</p>
+          <div class="review-foot">
+            <span class="status">Now Streaming</span>
+            <span class="verdict">Guilty Pleasure</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="review" data-tmdb-type="movie" data-tmdb-query="Dhamaal 4" data-tmdb-year="2026">
+        <div class="review-poster"><span class="mono">T<span class="amp">&amp;</span>T</span><img alt="Dhamaal 4 poster" loading="lazy" /></div>
+        <div class="review-body">
+          <div class="review-cat"><b>Movie</b> · In Cinemas</div>
+          <h3 class="review-title">Dhamaal 4</h3>
+          <p class="review-take">"More noise than plot, but the interval block still lands a laugh. Leave your logic at the door and you'll survive it."</p>
+          <div class="review-foot">
+            <div class="score"><span class="num">6.4</span><span class="out">/10</span></div>
+            <span class="verdict">Background Watch</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="review" data-tmdb-type="movie" data-tmdb-query="The Odyssey" data-tmdb-year="2026">
+        <div class="review-poster"><span class="mono">T<span class="amp">&amp;</span>T</span><img alt="The Odyssey poster" loading="lazy" /></div>
+        <div class="review-body">
+          <div class="review-cat"><b>Movie</b> · In Cinemas</div>
+          <h3 class="review-title">The Odyssey</h3>
+          <p class="review-take">"Nolan doing Greek myth in IMAX is exactly as overwhelming as it sounds. See it on the biggest screen you can find."</p>
+          <div class="review-foot">
+            <div class="score"><span class="num">8.7</span><span class="out">/10</span></div>
+            <span class="verdict">Must Watch</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="section" id="about">
+  <div class="wrap about-grid">
+    <div class="about-card reveal">
+      <span class="corner c-tl"></span>
+      <span class="corner c-br"></span>
+      <span class="mono-big">T<span class="amp">&amp;</span>T</span>
+      <span class="card-tag">Reality. Reviews. Stories.</span>
+    </div>
+    <div class="about-body reveal">
+      <div class="rule-lead single"><span class="eyebrow">About</span></div>
+      <h2>Hi, I'm the person behind This &amp; That.</h2>
+      <p>
+        I watch a truly unreasonable amount of reality TV so you can decide what's
+        actually worth your time. No breathless hype, no paid-for praise. Just an
+        honest read on what's brilliant, what's a mess, and what's both at once.
+      </p>
+      <p>
+        This &amp; That started as late-night group-chat rants about who deserved to
+        win. Now it's a proper review page: a score, a verdict, and the story
+        behind why a show hooks us. Movies are up next.
+      </p>
+      <p style="color:var(--ink-mute);font-size:.9rem;">
+        Come argue with me in the comments. That's half the fun.
+      </p>
+      <div class="sign">Reality. Reviews. <span>Stories.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOLLOW ================= -->
+<section class="section follow">
+  <div class="wrap reveal">
+    <div class="rule-lead single" style="justify-content:center;display:flex"><span class="eyebrow">Where it lives</span></div>
+    <div class="handle"><span class="at">@</span>this_and_that.in</div>
+    <p>New reviews, hot takes and the occasional unhinged live-watch, all on Instagram and YouTube. Follow along and never miss the verdict.</p>
+    <div class="follow-cta">
+      <a class="btn btn-solid" href="https://instagram.com/this_and_that.in" target="_blank" rel="noopener">
+        Follow on Instagram
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a class="btn btn-gold" href="https://www.youtube.com/@this_and_that.official" target="_blank" rel="noopener">
+        Watch on YouTube
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="5.2" width="19" height="13.6" rx="4"/><path d="M10.3 9.2l5 2.8-5 2.8z" fill="currentColor" stroke="none"/></svg>
+      </a>
+    </div>
+
+    <div class="ig-strip" aria-hidden="true">
+      <a class="ig-cell" href="https://instagram.com/this_and_that.in" target="_blank" rel="noopener"><span class="mono">T<span class="amp">&amp;</span>T</span></a>
+      <a class="ig-cell" href="https://instagram.com/this_and_that.in" target="_blank" rel="noopener">8.7</a>
+      <a class="ig-cell" href="https://instagram.com/this_and_that.in" target="_blank" rel="noopener"><span class="mono">T<span class="amp">&amp;</span>T</span></a>
+      <a class="ig-cell" href="https://instagram.com/this_and_that.in" target="_blank" rel="noopener">6.4</a>
+      <a class="ig-cell" href="https://instagram.com/this_and_that.in" target="_blank" rel="noopener"><span class="mono">T<span class="amp">&amp;</span>T</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NEWSLETTER ================= -->
+<section class="section news reviews" id="news">
+  <div class="wrap reveal">
+    <div class="rule-lead single" style="justify-content:center;display:flex"><span class="eyebrow">The weekly edit</span></div>
+    <h2 class="section-title" style="margin-top:1rem">One email. The best of the week.</h2>
+    <p class="lede" style="margin-inline:auto;text-align:center">The reviews worth reading and the shows worth watching, delivered every Friday.</p>
+    <form id="newsForm" novalidate>
+      <input type="email" id="email" placeholder="your@email.com" aria-label="Email address" required />
+      <button class="btn btn-solid" type="submit">Join the list</button>
+    </form>
+    <div class="confirm" id="confirm" role="status" aria-live="polite"></div>
+    <div class="fineprint">No spam. Unsubscribe anytime.</div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <span class="mono">T<span class="amp">&amp;</span>T</span>
+        <div class="fb-tag">Reality. Reviews. Stories.</div>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h4>Explore</h4>
+          <a href="#reviews">Latest reviews</a>
+          <a href="#about">About</a>
+          <a href="#news">Weekly edit</a>
+        </div>
+        <div class="foot-col">
+          <h4>Follow</h4>
+          <a href="https://instagram.com/this_and_that.in" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.youtube.com/@this_and_that.official" target="_blank" rel="noopener">YouTube</a>
+          <a href="#news">Weekly edit</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 This &amp; That. All views honestly held.</span>
+      <span>Made for people who take their reality TV seriously.</span>
+    </div>
+    <div class="tmdb-credit">Poster artwork &amp; metadata provided by <a href="https://www.themoviedb.org" target="_blank" rel="noopener">The Movie Database (TMDB)</a>. This product uses the TMDB API but is not endorsed or certified by TMDB.</div>
+  </div>
+</footer>
+
+<script>
+  /* =========================================================
+     TMDB POSTER ARTWORK
+     1. Get a free API key at themoviedb.org  (Settings > API)
+     2. Paste it between the quotes below.
+     Until then, each card shows the T&T monogram tile.
+     Per-card overrides: add data-poster="https://.../img.jpg"
+     to any <article> to force a specific image.
+  ========================================================= */
+  const TMDB_API_KEY = "";                                  // <-- paste your TMDB key here
+  const TMDB_IMG = "https://image.tmdb.org/t/p/w342";
+
+  async function loadPoster(card){
+    const img = card.querySelector(".review-poster img");
+    if(!img) return;
+
+    const onload = () => img.classList.add("loaded");
+
+    // Manual override wins
+    const manual = card.dataset.poster;
+    if(manual){ img.addEventListener("load", onload); img.src = manual; return; }
+
+    if(!TMDB_API_KEY) return;                                 // no key -> keep monogram
+
+    const q = card.dataset.tmdbQuery;
+    const type = card.dataset.tmdbType || "multi";            // movie | tv | multi
+    const year = card.dataset.tmdbYear;
+    if(!q) return;
+
+    let url = "https://api.themoviedb.org/3/search/" + type +
+              "?api_key=" + TMDB_API_KEY +
+              "&query=" + encodeURIComponent(q) +
+              "&include_adult=false";
+    if(year && type === "movie") url += "&year=" + year;
+    if(year && type === "tv")    url += "&first_air_date_year=" + year;
+
+    try{
+      const res = await fetch(url);
+      if(!res.ok) return;
+      const data = await res.json();
+      const hit = (data.results || []).find(r => r.poster_path);
+      if(!hit) return;
+      img.addEventListener("load", onload);
+      img.src = TMDB_IMG + hit.poster_path;
+    }catch(e){ /* network blocked or offline -> monogram stays */ }
+  }
+  document.querySelectorAll(".review").forEach(loadPoster);
+
+  /* ---------- nav + UI ---------- */
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 12);
+  onScroll();
+  window.addEventListener('scroll', onScroll, {passive:true});
+
+  const toggle = document.getElementById('menuToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open'); toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded', false);
+  }));
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.14, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('in'));
+  });
+
+  const form = document.getElementById('newsForm');
+  const confirmEl = document.getElementById('confirm');
+  form.addEventListener('submit', (ev) => {
+    ev.preventDefault();
+    const email = document.getElementById('email');
+    const val = email.value.trim();
+    const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+    if(!ok){ confirmEl.textContent = 'Hmm, that email doesn\u2019t look right. Try again?'; email.focus(); return; }
+    confirmEl.textContent = 'You\u2019re on the list. See you Friday.';
+    email.value = '';
+  });
+</script>
+
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => { document.location.href = "/admin/"; });
+      }
+    });
+  }
+</script>
+</body>
+</html>
